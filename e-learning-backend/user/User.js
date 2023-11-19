@@ -3,10 +3,20 @@ const mongoose = require("mongoose");
 const User = mongoose.model(
     "User",
     new mongoose.Schema({
-      full_name: String,
+      full_name : {
+        type: String,
+        required : true,
+      },
       dateofbirth: Date,
-      email: String,
-      password: String,
+      email: {
+        type: String,
+        required : true,
+        unique: true
+      },
+      password: {
+        type: String,
+        required : true
+      },
     })
   );
   
