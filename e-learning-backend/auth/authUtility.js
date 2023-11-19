@@ -34,5 +34,15 @@ const generateJwtToken = async (payload) => {
   }
 };
 
+const verifyJwtToken = async (token) => {
+  try {
+    var result = await jwt.verify(token, jwtSignatureSecret);
+    return result;
+  }
+  catch (error) {
+    throw error;
+  }
+}
 
-module.exports = { encryptPassword, generateJwtToken, verifyPassword }
+
+module.exports = { encryptPassword, generateJwtToken, verifyPassword, verifyJwtToken }

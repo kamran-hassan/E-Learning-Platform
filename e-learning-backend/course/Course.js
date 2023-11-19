@@ -7,6 +7,10 @@ const Course = mongoose.model(
           type: String,
           required: true,
         },
+        description: {
+          type: String,
+          required: true
+        },
         created_on: {
           type: Date,
           default: Date.now,
