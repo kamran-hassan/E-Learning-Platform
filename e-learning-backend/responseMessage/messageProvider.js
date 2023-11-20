@@ -17,7 +17,9 @@ const errroMessage = {
     wrongpassword: "Given Credentials are not Valid.",
     notAbletocreateCourse: "Not Able to Create a new Course",
     sessionExpired: "Session has been Expired",
-    notAbletoAddCourseData: "Not able to update course Data"
+    notAbletoAddCourseData: "Not able to update course Data",
+    coursefetcherror: "Not able to load the course.",
+    watchKeyerror: "Watch Key Not Found"
 }
 
 module.exports = { successMessage, warningMessage, errroMessage };
