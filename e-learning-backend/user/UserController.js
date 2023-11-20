@@ -41,7 +41,6 @@ const loginUser = async(u) => {
             else{
                 throw new Error(errroMessage.wrongpassword);
             }
-            mongoose.connection.close();
         }
         else{
             throw new Error(errroMessage.userNotExist);
@@ -55,6 +54,9 @@ const loginUser = async(u) => {
         else{
             throw new Error(errroMessage.unknownError)  // for all unknow errors, we can log using a logger for analysys. but for user a genral message should be sent.
         }
+    }
+    finally{
+        mongoose.connection.close();
     }
 
 }

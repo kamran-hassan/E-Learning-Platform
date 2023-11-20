@@ -9,7 +9,7 @@ const { AuthApiUpKey, authenticateHeaderToken, upAuthenticateHeaderToken, AuthAp
 const watchStreamApi = require('./watchStreams/watchStrea');
 
 var corsOptions = {
-    origin: ["http://localhost:5500","http://localhost:8080"]
+    origin: ["http://localhost:5500","http://localhost:8080", "http://localhost:3000", "http://192.168.29.76:3000"]
   };
 
 app.use(cors(corsOptions));

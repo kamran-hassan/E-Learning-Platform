@@ -122,6 +122,7 @@ async function verifyPassword(encpassword, password) {
   }
 
   const upAuthenticateHeaderToken = (req, res, next) => {
+    // console.log(req.headers)
     var token = req.headers.authorization;
     // console.log(token)
     if (token == null) {
@@ -144,12 +145,11 @@ async function verifyPassword(encpassword, password) {
   };
 
   const waAuthenticateHeaderToken = (req, res, next) => {
-    var token = req.headers.authorization;
-    // console.log(token)
+    var token = req.query.token;
+
+    console.log(token)
     if (token == null) {
       return res.sendStatus(401); // Unauthorized if token is missing
-    } else {
-        token = token.split(' ')[1]
     }
   
     jwt.verify(token, jwtSignatureSecret, (err, user) => {

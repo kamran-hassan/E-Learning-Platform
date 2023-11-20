@@ -37,13 +37,12 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Explore Courses Section */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold mb-8 text-center">Explore Our Courses</h2>
-          {/* Course Cards or Grid */}
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Course Card 1 */}
+
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
               <img src="https://via.placeholder.com/600x400" alt="Course" className="w-full h-40 object-cover" />
               <div className="p-6">
@@ -52,7 +51,7 @@ const HomePage = () => {
                 <a href="#" className="bg-blue-500 text-white px-4 py-2 rounded-full inline-block hover:bg-blue-600 transition duration-300">View Course</a>
               </div>
             </div>
-            {/* Course Card 2 */}
+
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
               <img src="https://via.placeholder.com/600x400" alt="Course" className="w-full h-40 object-cover" />
               <div className="p-6">
@@ -61,7 +60,7 @@ const HomePage = () => {
                 <a href="#" className="bg-blue-500 text-white px-4 py-2 rounded-full inline-block hover:bg-blue-600 transition duration-300">View Course</a>
               </div>
             </div>
-            {/* Course Card 3 */}
+
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
               <img src="https://via.placeholder.com/600x400" alt="Course" className="w-full h-40 object-cover" />
               <div className="p-6">
@@ -70,33 +69,33 @@ const HomePage = () => {
                 <a href="#" className="bg-blue-500 text-white px-4 py-2 rounded-full inline-block hover:bg-blue-600 transition duration-300">View Course</a>
               </div>
             </div>
-            {/* Add more Course Cards */}
+
           </div>
         </div>
       </section>
 
-      {/* Testimonials Section */}
+
       <section className="bg-gray-200 py-20">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold mb-8 text-center">What Our Users Say</h2>
-          {/* Testimonials */}
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Testimonial 1 */}
+
             <div className="bg-white rounded-lg shadow-md p-6">
               <p className="text-lg text-gray-800 mb-4">"I absolutely love the courses on this platform. They helped me gain valuable skills that I use in my job every day."</p>
 
             </div>
-            {/* Testimonial 2 */}
+
             <div className="bg-white rounded-lg shadow-md p-6">
               <p className="text-lg text-gray-800 mb-4">"The instructors are knowledgeable, and the interactive learning experience makes it easier to grasp complex concepts."</p>
 
             </div>
-            {/* Add more Testimonials */}
+
           </div>
         </div>
       </section>
 
-      {/* Footer */}
+
       <footer className="bg-gray-800 text-white py-8">
         <div className="container mx-auto text-center">
           <p>&copy; 2023 Your E-Learning Platform. All rights reserved.</p>

@@ -20,7 +20,7 @@ const Topbar = () => {
                 <a href="/" className="text-gray-600 hover:text-gray-800">Home</a>
               </li>
               <li className="p-1">
-                <a href="#" className="text-gray-600 hover:text-gray-800">Courses</a>
+                <a href="/course/browse/all/" className="text-gray-600 hover:text-gray-800">Courses</a>
               </li>
               <li className="p-1">
                 <a href="#" className="text-gray-600 hover:text-gray-800">About</a>

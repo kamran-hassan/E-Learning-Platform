@@ -28,6 +28,7 @@ const createCourseApi = async (req, res) => {
 
 const courseContentApi = async (req, res) => {
         try{
+            console.log(req.body)
             const result = await updateCourseContent(req.body)
             if(result){
                 res.send(result);
@@ -37,6 +38,7 @@ const courseContentApi = async (req, res) => {
             }
         }
         catch (error) {
+            console.log("+++", error)
             if(error instanceof TokenExpiredError){
                 res.status(401);
                 res.send({message: errroMessage.sessionExpired})
@@ -112,7 +114,7 @@ const getWatchGetFromQuickbucket = async (c_c) => {
                     if(c_c.keys){
                         c_c.keys.forEach(e => {
                             if(available_module.includes(e)){
-                                payload.fileNames[e] = c_c._id+'_module'+e.charAt[1]+'_video'
+                                payload.fileNames[e] = c_c._id+'_module'+e.charAt(1)+'_video'
                             }
                         })
                     }
@@ -127,6 +129,7 @@ const getWatchGetFromQuickbucket = async (c_c) => {
                     });
                     const content = await rawResponse.json();
                     content.course_content = cour.course_content
+                    await mongoose.connection.close();
                     return content;
                 }
             }
@@ -134,10 +137,6 @@ const getWatchGetFromQuickbucket = async (c_c) => {
         catch (error) {
             console.log("===",error);
             throw error;
-        }
-        finally{
-            mongoose.connection.close();
-            console.log("Closing Connection ")
         }
     }
     catch (error){
@@ -162,6 +161,7 @@ const getAllCourseApi = async (req, res) => {
             res.send({message: errroMessage.sessionExpired})
         }
         else {
+            console.log(error)
             res.status(400);
             res.send({message: errroMessage.coursefetcherror})
         }
@@ -176,20 +176,17 @@ const getAllCourse = async (c_c) => {
             // console.log(userdetails)
             // console.log(c_c.course_content)
             if(userdetails){
-                await mongoose.connect(connectionUriSecret);
-                const cour = await Course.find({}).select('course_name description')
-                return cour;
-
+                    await mongoose.connect(connectionUriSecret);
+                    const cour = await Course.find({}).select('course_name description')
+                    await mongoose.connection.close();
+                    console.log("Closing Connection ")
+                    return cour;
 
             }
         }
         catch (error) {
             // console.log("===",error);
             throw error;
-        }
-        finally{
-            mongoose.connection.close();
-            console.log("Closing Connection ")
         }
     }
     catch (error){
@@ -213,6 +210,7 @@ const getCourseContent = async (c_c) => {
                     console.log(cour[0], created_by_usr[0].full_name)
                     var ccourse = cour[0];
                     ccourse.created_by = created_by_usr[0].full_name;
+                    await mongoose.connection.close();
                     return ccourse;
                 }
 
@@ -222,12 +220,9 @@ const getCourseContent = async (c_c) => {
             // console.log("===",error);
             throw error;
         }
-        finally{
-            mongoose.connection.close();
-            console.log("Closing Connection ")
-        }
     }
     catch (error){
+        console.log("===", error)
         throw error;
     }
 }
@@ -244,10 +239,11 @@ const updateCourseContent = async (c_c) => {
                 if(usr != null){
                     var result = await Course.findOneAndUpdate({_id: c_c.course_details._id}, {course_content: c_c.course_content});
                     if(result){
-                        // console.log(result.course_content)
+                        result = await Course.findById(c_c.course_details._id)
+                        // console.log("--__--",result.course_content)
                         var files = {};
                         Object.keys(result.course_content).forEach(e => {
-                            files[e] = c_c.course_details._id+'_module'+e.charAt[1]+'_video'
+                            files[e] = c_c.course_details._id+'_module'+e.charAt(1)+'_video'
                         })
                         const rawResponse = await fetch(quickBucketService.updateKeyUrl, {
                             method: 'POST',

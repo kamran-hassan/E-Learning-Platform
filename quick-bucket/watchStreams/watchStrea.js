@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 function watchStreamApi(req, res){
-    console.log(req.user)
+    // console.log(req.user)
     const videoPath = path.join(__dirname, '../uploads', req.user.key+".mp4");
     console.log(videoPath)
     if (fs.existsSync(videoPath)) {
