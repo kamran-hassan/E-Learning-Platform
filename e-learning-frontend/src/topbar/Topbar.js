@@ -37,7 +37,7 @@ const Topbar = () => {
         {menu ? (
         <li
           onClick={() => setMenu(!menu)}
-          className="relative inline-block bg-blue-500 rounded-xl">
+          className="relative inline-block bg-blue-500 rounded-xl z-10">
           <a
             href="#"
             className="text-white px-4 py-2 hover:text-gray-800"
@@ -52,7 +52,7 @@ const Topbar = () => {
             <a className="block px-4 py-2 hover:bg-gray-200" href="#">
               Watch
             </a>
-            <a onClick={() => setToken(null)} className="block px-4 py-2 hover:bg-gray-200" href="#">
+            <a onClick={() => {setToken(null); window.location.href="/"}} className="block px-4 py-2 hover:bg-gray-200" href="#">
               Sign Out
             </a>
           </div>
