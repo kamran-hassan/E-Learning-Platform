@@ -46,10 +46,10 @@ const Topbar = () => {
             <span className="pl-1 font-extrabold text-black">^</span>
           </a>
           <div className="absolute bg-white mt-2 py-2 w-36 rounded-md shadow-md overflow-y-auto max-h-40">
-            <a className="block px-4 py-2 hover:bg-gray-200" href="#">
+            <a className="block px-4 py-2 hover:bg-gray-200" href="/course/upload/">
               Upload
             </a>
-            <a className="block px-4 py-2 hover:bg-gray-200" href="#">
+            <a className="block px-4 py-2 hover:bg-gray-200" href="/course/browse/all/">
               Watch
             </a>
             <a onClick={() => {setToken(null); window.location.href="/"}} className="block px-4 py-2 hover:bg-gray-200" href="#">

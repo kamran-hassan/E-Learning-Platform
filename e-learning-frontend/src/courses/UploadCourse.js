@@ -269,7 +269,11 @@ const UploadCourse = () => {
                   Create Course
                   </button>
                 )}
+
             </form>
+            <div className='w-screen text-right'>
+            <button className='mx-12 my-4 bg-green-400 p-2 rounded-lg' onClick={() => window.location.href = "/course/browse/all/"}> Browse All Course </button>
+            </div>
             </div>
     </div>
   );
