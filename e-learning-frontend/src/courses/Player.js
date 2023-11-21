@@ -69,16 +69,18 @@ const Player = () => {
 
   useEffect(() => {
     console.log("Selected Video Changed");
-    axios.post(requestUrls.getWatchKeydetails, {
-      jwt: token,
-      _id: _id,
-      keys: [selectedVideo.moduleNumber]
-    }).then((r) => {
-      //console.log(r.data[selectedVideo.moduleNumber]);
-      setCurrentUrl("http://localhost:9999/quickBucket/watch/?token="+r.data[selectedVideo.moduleNumber])
-    }).catch((e) => {
-      //console.log(e);
-    })
+    if(selectedVideo){
+      axios.post(requestUrls.getWatchKeydetails, {
+        jwt: token,
+        _id: _id,
+        keys: [selectedVideo.moduleNumber]
+      }).then((r) => {
+        //console.log(r.data[selectedVideo.moduleNumber]);
+        setCurrentUrl("http://localhost:9999/quickBucket/watch/?token="+r.data[selectedVideo.moduleNumber])
+      }).catch((e) => {
+        //console.log(e);
+      })
+    }
   }, [selectedVideo])
 
 
