@@ -50,19 +50,6 @@ const Player = () => {
   };
   
   const VideoPlayer = ({ selectedVideo }) => {
-    console.log(selectedVideo)
-    if(selectedVideo){
-      axios.post(requestUrls.getWatchKeydetails, {
-        jwt: token,
-        _id: _id,
-        keys: [selectedVideo.moduleNumber]
-      }).then((r) => {
-        // console.log(r.data[selectedVideo.moduleNumber]);
-        setCurrentUrl("http://localhost:9999/quickBucket/watch/?token="+r.data[selectedVideo.moduleNumber])
-      }).catch((e) => {
-        //console.log(e);
-      })
-    }
     return (<div className="w-3/4 p-4">
       {
         selectedVideo && (
@@ -79,6 +66,20 @@ const Player = () => {
       }
     </div>);
   };
+
+  useEffect(() => {
+    console.log("Selected Video Changed");
+    axios.post(requestUrls.getWatchKeydetails, {
+      jwt: token,
+      _id: _id,
+      keys: [selectedVideo.moduleNumber]
+    }).then((r) => {
+      //console.log(r.data[selectedVideo.moduleNumber]);
+      setCurrentUrl("http://localhost:9999/quickBucket/watch/?token="+r.data[selectedVideo.moduleNumber])
+    }).catch((e) => {
+      //console.log(e);
+    })
+  }, [selectedVideo])
 
 
 
@@ -100,8 +101,6 @@ const Player = () => {
     })
   console.log(module)
   setVideos(module);
-
-  
   }).catch(e => {
     if(e.response.status == 401){
       setToken(null);
