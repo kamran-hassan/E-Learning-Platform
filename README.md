@@ -6,3 +6,7 @@ Unique Part - In this project a CDN service Quick Bucket is created to store the
 
 ![image2](https://github.com/kamran-hassan/E-Learning-Platform/assets/52744272/968bc530-8867-4da6-a0dc-c46bb448d41d)
 
+
+<p>
+    <img src="image2.jpg" />
+</p>
